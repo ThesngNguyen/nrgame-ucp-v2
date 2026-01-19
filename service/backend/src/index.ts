@@ -2,12 +2,26 @@ import express, { Request, Response } from 'express';
 import mysql from 'mysql2/promise';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
 
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+// CORS configuration for production
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production'
+    ? ['https://yourdomain.com', 'http://yourdomain.com']
+    : ['http://localhost:5173'],
+  credentials: true
+}));
+
 app.use(express.json());
+
+// Serve static files from frontend build
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../../../frontend/dist')));
+}
 
 const dbConfig = {
   host: process.env.DB_HOST || 'localhost',
@@ -19,11 +33,20 @@ const dbConfig = {
 app.get('/api/status', (req: Request, res: Response) => {
   res.json({
     message: "SAMP UCP API (TypeScript) is running!",
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
   });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`[Server]: Backend TS running at http://localhost:${PORT}`);
+// Serve frontend for all non-API routes
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, '../../../frontend/dist/index.html'));
+  });
+}
+
+const PORT = Number(process.env.PORT) || 3000;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`[Server]: Backend TS running at http://0.0.0.0:${PORT}`);
+  console.log(`[Server]: Environment: ${process.env.NODE_ENV || 'development'}`);
 });
