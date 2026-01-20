@@ -1,7 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+</script>
 
 <template>
-  <Home />
+  <div>
+    <router-view />
+  </div>
 </template>
 
 <style scoped></style>
