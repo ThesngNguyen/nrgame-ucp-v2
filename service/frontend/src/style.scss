@@ -1,0 +1,614 @@
+@use "sass:map";
+@import url('https://fonts.googleapis.com/css2?family=National+Park:wght@200..800&display=swap');
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+// ===== DESIGN TOKENS PACK =====
+
+// Primary Colors
+$primary-color: #073e60;
+$primary-light: #37b1ff;
+$primary-dark: #0f163e;
+$primary-darker: #000314;
+// Secondary Colors
+$secondary-color: #ffffff;
+$secondary-light: #f8f9fa;
+$secondary-dark: #e9ecef;
+
+// Accent Colors
+$accent-blue: #37b1ff;
+$accent-green: #28a745;
+$accent-yellow: #ffc107;
+$accent-red: #dc3545;
+$accent-orange: #fd7e14;
+$accent-navy: #0f163e;
+$accent-dark: #000314;
+
+// Neutral Colors
+$neutral-100: #f8f9fa;
+$neutral-200: #e9ecef;
+$neutral-300: #dee2e6;
+$neutral-400: #ced4da;
+$neutral-500: #adb5bd;
+$neutral-600: #6c757d;
+$neutral-700: #495057;
+$neutral-800: #343a40;
+$neutral-900: #212529;
+
+// Light Theme
+:root {
+  // Colors
+  --color-primary: #{$primary-color}; // #073e60
+  --color-primary-light: #{$primary-light}; // #37b1ff
+  --color-primary-dark: #{$primary-dark}; // #0f163e
+  --color-primary-darker: #{$primary-darker}; // #000314
+
+  --color-secondary: #{$secondary-color};
+  --color-secondary-light: #{$secondary-light};
+  --color-secondary-dark: #{$secondary-dark};
+
+  // Background
+  --bg-primary: #{$secondary-color};
+  --bg-secondary: #{$neutral-100};
+  --bg-tertiary: #{$neutral-200};
+  --bg-card: #{$secondary-color};
+  --bg-overlay: rgba(0, 3, 20, 0.5);
+
+  // Text
+  --text-primary: #{$primary-darker};
+  --text-secondary: #{$primary-dark};
+  --text-tertiary: #{$neutral-600};
+  --text-inverse: #{$secondary-color};
+
+  // Border
+  --border-color: #{$neutral-300};
+  --border-light: #{$neutral-200};
+  --border-dark: #{$primary-color};
+
+  // Status Colors
+  --color-success: #{$accent-green};
+  --color-warning: #{$accent-yellow};
+  --color-danger: #{$accent-red};
+  --color-info: #{$accent-blue};
+
+  // Shadows
+  --shadow-sm: 0 1px 2px 0 rgba(0, 3, 20, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 3, 20, 0.1), 0 2px 4px -1px rgba(0, 3, 20, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 3, 20, 0.1), 0 4px 6px -2px rgba(0, 3, 20, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 3, 20, 0.1), 0 10px 10px -5px rgba(0, 3, 20, 0.04);
+}
+
+// Dark Theme - Dành cho dảk mode
+[data-theme="dark"] {
+  // Background
+  --bg-primary: #{$primary-darker};
+  --bg-secondary: #{$primary-dark};
+  --bg-tertiary: #{$primary-color};
+  --bg-card: #{$primary-dark};
+  --bg-overlay: rgba(0, 3, 20, 0.8);
+
+  // Text
+  --text-primary: #{$secondary-color};
+  --text-secondary: #{$neutral-300};
+  --text-tertiary: #{$neutral-400};
+  --text-inverse: #{$primary-darker};
+
+  // Border
+  --border-color: #{$primary-color};
+  --border-light: #{$primary-dark};
+  --border-dark: #{$primary-light};
+
+  // Shadows
+  --shadow-sm: 0 1px 2px 0 rgba(0, 3, 20, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 3, 20, 0.4), 0 2px 4px -1px rgba(0, 3, 20, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 3, 20, 0.4), 0 4px 6px -2px rgba(0, 3, 20, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 3, 20, 0.5), 0 10px 10px -5px rgba(0, 3, 20, 0.4);
+}
+
+// ===== TYPOGRAPHY =====
+:root {
+  // Font Families
+  --font-national-park: "National Park", "Arial", "Helvetica", sans-serif;
+
+  // Font Sizes
+  --text-xs: 0.75rem; // 12px
+  --text-sm: 0.875rem; // 14px
+  --text-base: 1rem; // 16px
+  --text-lg: 1.125rem; // 18px
+  --text-xl: 1.25rem; // 20px
+  --text-2xl: 1.5rem; // 24px
+  --text-3xl: 1.875rem; // 30px
+  --text-4xl: 2.25rem; // 36px
+  --text-5xl: 3rem; // 48px
+
+  // Line Heights
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+
+  // Font Weights
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+}
+
+// ===== SPACING =====
+:root {
+  --space-0: 0;
+  --space-1: 0.25rem; // 4px
+  --space-2: 0.5rem; // 8px
+  --space-3: 0.75rem; // 12px
+  --space-4: 1rem; // 16px
+  --space-5: 1.25rem; // 20px
+  --space-6: 1.5rem; // 24px
+  --space-8: 2rem; // 32px
+  --space-10: 2.5rem; // 40px
+  --space-12: 3rem; // 48px
+  --space-16: 4rem; // 64px
+  --space-20: 5rem; // 80px
+  --space-24: 6rem; // 96px
+}
+
+// ===== BREAKPOINTS =====
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+// ===== MIXINS =====
+
+// Responsive breakpoint mixin
+@mixin breakpoint($size) {
+  @if map.has-key($breakpoints, $size) {
+    $breakpoint: map.get($breakpoints, $size);
+
+    @if $breakpoint ==0 {
+      @content;
+    }
+
+    @else {
+      @media (min-width: $breakpoint) {
+        @content;
+      }
+    }
+  }
+}
+
+// Button variants mixin
+@mixin button-variant($bg, $color: white, $hover-bg: null, $border: null) {
+  background-color: $bg;
+  color: $color;
+  border-color: $border;
+
+  &:hover {
+    background-color: $hover-bg;
+    border-color: $hover-bg;
+  }
+}
+
+// Card component mixin
+@mixin card-base {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+}
+
+// ===== BORDER RADIUS =====
+:root {
+  --radius-none: 0;
+  --radius-sm: 0.125rem; // 2px
+  --radius-md: 0.375rem; // 6px
+  --radius-lg: 0.5rem; // 8px
+  --radius-xl: 0.75rem; // 12px
+  --radius-full: 9999px;
+}
+
+// ===== TRANSITIONS =====
+:root {
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+}
+
+// ===== GLOBAL STYLES =====
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  line-height: var(--leading-normal);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+// ===== UTILITY CLASSES =====
+
+// Text utilities
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-tertiary {
+  color: var(--text-tertiary);
+}
+
+.text-inverse {
+  color: var(--text-inverse);
+}
+
+// Background utilities
+.bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.bg-card {
+  background-color: var(--bg-card);
+}
+
+// Border utilities
+.border {
+  border: 1px solid var(--border-color);
+}
+
+.border-light {
+  border: 1px solid var(--border-light);
+}
+
+.border-dark {
+  border: 1px solid var(--border-dark);
+}
+
+// Shadow utilities
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+// ===== COMPONENT STYLES =====
+
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &-primary {
+    @include button-variant(var(--color-primary), white);
+  }
+
+  &-secondary {
+    @include button-variant(var(--bg-secondary), var(--text-primary));
+  }
+
+  &-success {
+    @include button-variant(var(--color-success));
+  }
+
+  &-danger {
+    @include button-variant(var(--color-danger));
+  }
+
+  &-accent {
+    @include button-variant(#{$accent-blue}, white);
+  }
+
+  &-navy {
+    @include button-variant(#{$accent-navy}, white);
+  }
+
+  &-gradient {
+    background: linear-gradient(45deg, #{$primary-color}, #{$primary-light});
+    color: white;
+    border: none;
+
+    &:hover {
+      background: linear-gradient(45deg, #{$primary-dark}, #{$primary-color});
+    }
+  }
+}
+
+// Cards
+.card {
+  @include card-base;
+
+  &-header {
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--border-light);
+    margin-bottom: var(--space-4);
+  }
+
+  &-title {
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--text-primary);
+  }
+
+  &-content {
+    color: var(--text-secondary);
+  }
+}
+
+// Form elements
+.form-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast);
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(7, 99, 143, 0.1);
+  }
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+}
+
+// Navigation
+.nav {
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--space-4) 0;
+
+  &-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+
+    &:hover,
+    &.active {
+      color: var(--color-primary);
+      background-color: var(--bg-secondary);
+    }
+  }
+}
+
+// ===== RESPONSIVE UTILITIES =====
+@include breakpoint(sm) {
+  .text-sm-lg {
+    font-size: var(--text-lg);
+  }
+
+  .p-sm-6 {
+    padding: var(--space-6);
+  }
+}
+
+@include breakpoint(md) {
+  .text-md-xl {
+    font-size: var(--text-xl);
+  }
+
+  .p-md-8 {
+    padding: var(--space-8);
+  }
+}
+
+@include breakpoint(lg) {
+  .text-lg-2xl {
+    font-size: var(--text-2xl);
+  }
+
+  .p-lg-12 {
+    padding: var(--space-12);
+  }
+}
+
+// ===== SAMP SPECIFIC STYLES =====
+.samp-server-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+
+  &.online {
+    background-color: rgba(55, 177, 255, 0.1); // Using bright blue
+    color: var(--color-info);
+  }
+
+  &.offline {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: var(--color-danger);
+  }
+
+  &::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+  }
+}
+
+.player-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+
+  .stat-card {
+    @include card-base;
+    text-align: center;
+
+    .stat-number {
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary); // Will use #073e60
+      background: linear-gradient(45deg,
+          var(--color-primary),
+          var(--color-primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin-top: var(--space-2);
+    }
+  }
+}
+
+// Landing page specific styles
+.landing-hero {
+  background: linear-gradient(135deg,
+    #{$primary-darker} 0%,
+    #{$primary-dark} 35%,
+    #{$primary-color} 70%,
+    #{$primary-light} 100%);
+
+  .hero-title {
+    background: linear-gradient(45deg, #{$secondary-color}, #{$primary-light});
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+// ===== GLOBAL STYLES =====
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-national-park);
+  line-height: var(--leading-normal);
+}
+
+body {
+  margin: 0 !important; // Force override browser default
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
