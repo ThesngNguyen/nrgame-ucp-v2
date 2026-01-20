@@ -18,7 +18,7 @@ import AppHeader from "../../components/common/AppHeader.vue";
   margin-top: -63px;
   height: 100vh;
   width: 100%;
-  background-image: url("./public/assets/landing_background.png");
+  background-image: url("../../../public/assets/landing_background.png");
   background-size: cover;
   clip-path: polygon(0 50px, 15% 35px, 85% 35px, 100% 50px, 100% 100%, 0 100%);
 }
