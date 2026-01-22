@@ -26,8 +26,8 @@ import AppSidebar from "./AppSidebar.vue";
     to bottom,
     #000000 0%,
     #000000 49.9%,
-    #ffffff 50.1%,
-    #ffffff 100%
+    transparent 50%,
+    transparent 100%
   );
   height: 9rem;
 
@@ -74,10 +74,10 @@ import AppSidebar from "./AppSidebar.vue";
         inset: 0;
         background: var(--color-primary-light);
         clip-path: polygon(
-          0 calc(100% - 1px),
-          15% calc(85% - 1px),
-          85% calc(85% - 1px),
-          100% calc(100% - 1px),
+          0 calc(100% - 3px),
+          15% calc(85% - 3px),
+          85% calc(85% - 3px),
+          100% calc(100% - 3px),
           100% 100%,
           85% 85%,
           15% 85%,

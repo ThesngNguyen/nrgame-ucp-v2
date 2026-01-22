@@ -1,0 +1,19 @@
+// ===== GLOBAL STYLES =====
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-national-park);
+  line-height: var(--leading-normal);
+}
+
+body {
+  margin: 0 !important; // Force override browser default
+  padding: 0;
+  color: var(--text-primary);
+  font-size: var(--text-base);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}

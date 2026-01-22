@@ -1,0 +1,93 @@
+@use "sass:map";
+@use "breakpoints" as *;
+
+// ===== MIXINS =====
+
+// Responsive breakpoint mixin
+@mixin breakpoint($size) {
+  @if map.has-key($breakpoints, $size) {
+    $breakpoint: map.get($breakpoints, $size);
+
+    @if $breakpoint ==0 {
+      @content;
+    }
+
+    @else {
+      @media (min-width: $breakpoint) {
+        @content;
+      }
+    }
+  }
+}
+
+// Button variants mixin
+@mixin button-variant($bg, $color: white, $hover-bg: null, $border: null) {
+  background-color: $bg;
+  color: $color;
+  border-color: $border;
+
+  &:hover {
+    background-color: $hover-bg;
+    border-color: $hover-bg;
+  }
+}
+
+// Card component mixin
+@mixin card-base {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-6);
+}
+
+// Responsive background image mixin
+@mixin responsive-bg($mobile-image, $tablet-image: null, $desktop-image: null) {
+  background-image: url($mobile-image);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @if $tablet-image {
+    @include breakpoint(md) {
+      background-image: url($tablet-image);
+    }
+  }
+
+  @if $desktop-image {
+    @include breakpoint(lg) {
+      background-image: url($desktop-image);
+    }
+  }
+}
+
+// Hero section mixin
+@mixin hero-section($min-height: 100vh) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: $min-height;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-overlay);
+    z-index: 1;
+  }
+
+  >* {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+@mixin clip-path-polygon($points) {
+  clip-path: polygon($points);
+  -webkit-clip-path: polygon($points);
+}
