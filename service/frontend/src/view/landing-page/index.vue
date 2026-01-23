@@ -33,7 +33,7 @@ import AppHeader from "../../components/common/AppHeader.vue";
     flex-direction: column;
     position: relative;
     z-index: 1;
-    background-image: url("../../../public/assets/landing_background.png");
+    background-image: url("../../../public/assets/landing_background.webp");
     background-position: center;
     background-size: cover;
     clip-path: polygon(0 50px, 15% 35px, 85% 35px, 100% 50px, 100% 100%, 0 100%);

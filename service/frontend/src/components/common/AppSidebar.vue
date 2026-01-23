@@ -41,7 +41,7 @@ const navItems = [
     <div v-if="isDesktop" class="desktop_menu">
       <div class="navbar_logo">
         <router-link to="/" class="navbar_logo_link">
-          <img src="/assets/logo_server.png" alt="NRGAME" class="navbar_logo_image" />
+          <img src="/assets/logo_server.webp" alt="NRGAME" class="navbar_logo_image" />
         </router-link>
       </div>
       <div class="navbar_links">
@@ -67,7 +67,7 @@ const navItems = [
     <div v-if="isTablet" class="tablet_menu">
       <div class="navbar_logo">
         <router-link to="/" class="navbar_logo_link">
-          <img src="/assets/logo_server.png" alt="NRGAME" class="navbar_logo_image" />
+          <img src="/assets/logo_server.webp" alt="NRGAME" class="navbar_logo_image" />
         </router-link>
       </div>
       <div class="navbar_menu">
@@ -100,7 +100,7 @@ const navItems = [
     <div v-if="isMobile" class="mobile_menu">
       <div class="navbar_logo">
         <router-link to="/" class="navbar_logo_link">
-          <img src="/assets/logo_server.png" alt="NRGAME" class="navbar_logo_image" />
+          <img src="/assets/logo_server.webp" alt="NRGAME" class="navbar_logo_image" />
         </router-link>
       </div>
       <div class="navbar_menu">
