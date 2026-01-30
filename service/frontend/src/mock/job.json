@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "image": "./assets/jobs/lumberjack.webp",
+    "title": "Lumberjack",
+    "description": "Khai thác gỗ và vận chuyển."
+  },
+  {
+    "id": 2,
+    "image": "./assets/jobs/fisherman.webp",
+    "title": "Fisherman",
+    "description": "Trở thành tay đánh cá đẳng cấp."
+  },
+  {
+    "id": 3,
+    "image": "./assets/jobs/feat1.webp",
+    "title": "Hệ thống /lucrac",
+    "description": "Tìm kiếm những điều bí ẩn nằm sâu bên trong những thùng rác."
+  },
+  {
+    "id": 4,
+    "image": "/assets/jobs/haingu.png",
+    "title": "Hải ngu",
+    "description": "Hải ngu vcl."
+  }
+]
